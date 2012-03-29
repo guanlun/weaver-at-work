@@ -69,3 +69,7 @@ html, body {
     color:#38F;
     background:#DDD;
 }
+
+#article_body ul {
+    color:#555;
+}
