@@ -12,5 +12,10 @@ $(function() {
 
         $('#contact_view').css('left', body_width - contact_width - 10);
         $('#contact_view').css('top', body_height - contact_height - 10);
+
+        var margin = 0;
+        var increasing = false;
+
+        $('#weaver_container').addClass('weaver_move_up');
     });
 });
