@@ -30,61 +30,7 @@
     -webkit-animation-duration:         5s;
     -webkit-animation-iteration-count:  infinite;
     -webkit-animation-direction:        alternate;
-    -moz-animation-name:             move_up;
-    -moz-animation-duration:         5s;
-    -moz-animation-iteration-count:  infinite;
-    -moz-animation-direction:        alternate;
-    animation-name:             move_up;
-    animation-duration:         5s;
-    animation-iteration-count:  infinite;
-    animation-direction:        alternate;
-}
-
-@font-face {
-	font-family:PlutoLight;
-	src:url('../fonts/PlutoLight.ttf');
-}
-
-@font-face {
-	font-family:PlutoRounded;
-	src:url('../fonts/PlutoRounded.ttf');
-}
-
-body {
-	overflow:hidden;
-}
-
-#container {
-    text-align:center;
-    position:absolute;
-    top:0px;
-}
-
-#upper_right_corner_banner_container {
-	position:absolute;
-	text-align:center;
-	top:30px;
-	right:-55px;
-	height:250px;
-	width:250px;
-}
-
-#corner_banner {
-	height:20px;
-	width:300px;
-	background:#999;
-	color:#FFF;
-	
-	-webkit-transform:rotate(45deg);
-}
-
-#corner_banner #banner_content {
-	font-family:PlutoRounded;
-	font-size:16px;
-}
-
-#title_container {
-    margin-top:20px;
+    -webkit-animation-timing-function:  ease-in-out;
 }
 
 #dirty_container {
@@ -94,34 +40,21 @@ body {
     color:#777;
 }
 
-#nav_bar_container {
-	margin-top:20px;
-	font-family:PlutoLight;
+#title_container {
+    margin-top:20px;
+    margin-bottom:20px;
 }
 
-#nav_bar_container ul {
-	margin-left:-50px;
-	padding-left:0px;	
+#weaver_text {
+    font-family:BetonExtraBold;
+    font-size:50pt;
 }
 
-#nav_bar_container ul li {
-	float:left;
-	display:inline;
-	margin-left:50px;
-	cursor:pointer;
-}
-
-#nav_bar_container ul li .nav_underline {
-	margin:0 auto;
-	height:1px;
-	width:0px;
-	background:#000;
-	
-	-webkit-transition:width 0.3s ease-in-out;
-}
-
-#nav_bar_container ul li:hover .nav_underline {
-	width:36px;
+#at_work_text {
+    margin-top:-15px;
+    font-family:BetonBold;
+    font-size:36pt;
+    color:#666;
 }
 
 #contact_view {

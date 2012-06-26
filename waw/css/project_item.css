@@ -1,0 +1,54 @@
+#project_item_inner_container {
+	margin-top:30px;
+	width:600px;
+	text-align:left;
+}
+
+#project_item_title_container {
+
+}
+
+#project_item_title_text {
+	text-align:right;
+	font-family:PlutoRounded;
+	font-size:20pt;
+	margin-right:40px;
+}
+
+#project_item_middle_container {
+	margin-top:25px;
+	overflow:hidden;
+}
+
+#project_item_info_container {
+	float:left;
+	width:250px;
+}
+
+.project_item_info_entry {
+	font-family:PlutoLight;
+	font-size:10pt;
+}
+
+.project_item_info_title {
+	
+}
+
+.project_item_info_value {
+	margin-left:30px;
+}
+
+#project_item_gallery_container {
+	float:right;
+	width:320px;
+}
+
+#project_item_gallery_container img {
+	width:inherit;
+}
+
+#project_item_text_container {
+	margin-top:30px;
+	font-family:Plutolight;
+	font-size:9pt;
+}

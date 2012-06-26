@@ -1,0 +1,25 @@
+body {
+	overflow-x:hidden;
+}
+
+a:link {
+	text-decoration:none;
+	color:#000;
+}
+
+a:visited {
+	text-decoration:none;
+	color:#000;
+}
+
+#container {
+	position:absolute;
+    top:0px;
+	text-align:center;
+}
+
+.code {
+	font-family:Consolas;
+	font-size:10pt;
+	text-align:left;
+}

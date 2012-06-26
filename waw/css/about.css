@@ -1,0 +1,16 @@
+#about_photo_container {
+	margin-top:20px;
+	height:400px;
+}
+
+#about_photo_container img {
+	height:inherit;
+}
+
+#about_text_container {
+	margin-top:30px;
+	width:450px;
+	font-family:PlutoLight;
+	font-size:10pt;
+	text-align:justify;
+}
