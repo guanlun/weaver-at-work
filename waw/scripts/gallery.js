@@ -180,10 +180,14 @@ jQuery.fn.gallery = function() {
         }
         img_title.html($(this).attr('src'));
     });
-
+        
+    set_img($(imgs.eq(0)).attr('src'));
+    img_title.html($(imgs.eq(0)).attr('src'));
+    /*
     imgs.eq(0).load(function() { // when the first image is loaded, set it as the display image
         $(this).css('opacity', '0.8');
         set_img($(this).attr('src'));
         img_title.html($(this).attr('src'));
     });
+    */
 };

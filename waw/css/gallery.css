@@ -1,0 +1,58 @@
+#gallery_title_text {
+	text-align:right;
+	font-family:PlutoRounded;
+	font-size:20pt;
+	margin-right:40px;
+}
+
+#gallery_item_container {
+	margin-top:10px;
+}
+
+.gallery_item {
+	margin-top:30px;
+}
+
+.gallery_item_cover_container {
+	float:left;
+	overflow:hidden;
+}
+
+.gallery_img {
+	display:none;
+}
+
+.gallery_img img {
+	width:inherit;
+	height:inherit;
+}
+
+.cover {
+	display:block;
+	width:250px;
+	height:180px;
+}
+
+.gallery_item_info_container {
+	float:left;
+	margin-left:50px;
+	width:300px;
+}
+
+.gallery_item_title_text {
+	font-family:PlutoRounded;
+	font-size:14pt;
+}
+
+.gallery_item_date_text {
+	margin-top:10px;
+	font-family:PlutoLight;
+	font-size:12pt;
+}
+
+.gallery_item_description_text {
+	margin-top:5px;
+	font-family:PlutoLight;
+	font-size:11pt;
+}
+

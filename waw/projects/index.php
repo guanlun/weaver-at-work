@@ -1,19 +1,16 @@
 <? include_once('../templates/header.php'); ?>
         <link href="../css/project_item.css" rel="stylesheet" />
-        <script type='text/javascript' src='../scripts/gallery.js'></script>
-        <!--
+        <script type='text/javascript' src='../scripts/scroll.js'></script>
+        
         <script type='text/javascript'>
         	$(window).load(function() {
-        		$('#project_item_gallery_container').gallery({
-        			'width': 250,
-        			'height': 150,
-        		});
+        		$('#project_item_info_container').scroll();
         	});
         </script>
-        -->
+        
         <div id='container'>
         	<? include_once('../templates/nav_bar.php'); ?>
-        	<div id='project_item_inner_container'>
+        	<div id='inner_container'>
     			<div id='project_item_title_text'>BallCraft</div>
         		
         		<div id='project_item_middle_container'>
@@ -39,6 +36,14 @@
 	        		
 	        		<div id='project_item_gallery_container'>
 	        			<img src='BallCraft/images/ballcraft02.jpg' />
+	        			<div id='project_item_gallery_bottom_bar'>
+	        				<div id='project_item_gallery_selector_container'>
+	        					<div class='project_item_gallery_selector'></div>
+	        					<div class='project_item_gallery_selector'></div>
+	        					<div class='project_item_gallery_selector'></div>
+	        					<div class='project_item_gallery_selector'></div>
+	        				</div>
+	        			</div>
 	        		</div>
 	        			<!--
 	        			<div class='gallery'>
