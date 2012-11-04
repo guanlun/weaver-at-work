@@ -37,3 +37,26 @@
 #banner_content #banner_contact_part {
     margin-left:50px;
 }
+
+#talkbubble {
+	display:none;
+   width: 120px; 
+   height: 80px; 
+   background: #FFF;
+   position: absolute;
+   right:80px;
+   top:20px;
+   -webkit-border-radius: 10px; 
+}
+
+#talkbubble:before {
+   content:"";
+   position: absolute;
+   left: 100%;
+   top: 16px;
+   width: 0;
+   height: 0;
+   border-top: 10px solid transparent;
+   border-left: 25px solid #FFF;
+   border-bottom: 10px solid transparent;
+}

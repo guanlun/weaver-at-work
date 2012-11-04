@@ -38,11 +38,13 @@
     font-family:PlutoLight;
     font-size:12pt;
     color:#777;
+    text-align:center;
 }
 
 #title_container {
     margin-top:20px;
     margin-bottom:20px;
+    text-align:center;
 }
 
 #weaver_text {

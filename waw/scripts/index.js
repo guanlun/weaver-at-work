@@ -17,5 +17,9 @@ $(function() {
         var increasing = false;
 
         $('#weaver_container').addClass('weaver_move_up');
+        
+        $('#banner_contact_part').click(function() {
+	    	$('#talkbubble').css('display', 'block'); 
+        });
     });
 });
