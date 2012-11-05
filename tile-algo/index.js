@@ -1,130 +1,25 @@
+var images = [
+    "images/image1.jpg",
+    "images/image2.jpg",
+    "images/image3.jpg",
+    "images/image4.jpg",
+    "images/image5.jpg",
+    "images/image6.jpg",
+    "images/image7.jpg",
+    "images/image8.jpg",
+    "images/image9.jpg",
+    "images/image10.jpg",
+    "images/image11.jpeg",
+    "images/image12.jpeg",
+    "images/image13.jpeg",
+    "images/image14.jpeg",
+    "images/image15.jpeg",
+    "images/image16.jpeg",
+];
+
 var WIDTH = 5;
 var GRID_SIZE = 100;
 var INTERVAL = 10;
-var NUM_GRIDS = 30;
-
-var Grid = function(row, col) {
-    this.row = row;
-    this.col = col;
-}
-
-var Post = function(tiles) {
-    this.tiles = tiles;
-    for (index in tiles) {
-
-    }
-}
-
-function randomColor() {
-    var R = Math.floor(Math.random() * 255);
-    var G = Math.floor(Math.random() * 255);
-    var B = Math.floor(Math.random() * 255);
-    return [ R, G, B, 0.3 ];
-}
-
-function sizeInvalid(h, w) {
-    if (h + w > WIDTH + 2) { // too large
-        return true;
-    }
-
-    if (h >= WIDTH - 1 || w >= WIDTH - 1) {
-        return true;
-    }
-
-    if (h / w > 2 || w / h > 2) {
-        return true;
-    }
-
-    if (h == 1 || w == 1) {
-        if (Math.random() < 0.8) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    if (w == WIDTH) {
-        return true;
-    }
-    return false;
-}
-
-function randomSize(maxWidth) {
-    do {
-        var w = Math.floor(Math.random() * maxWidth + 1);
-        var h = Math.floor(Math.random() * 3 + 1);
-    } while (sizeInvalid(h, w));
-    return [ h, w ];
-}
-
-function getNextFreeGrid() {
-    for (var i = 0; i < 50; i++) {
-        for (var j = 0; j < WIDTH; j++) {
-            if (grids[i][j] == false) {
-                return [ i, j ]
-            }
-        }
-    }
-    return null;
-}
-
-function getMaxWidth(row, col) {
-    var i;
-    for (i = col; i < WIDTH; i++) {
-        if (grids[row][i]) { // occupied
-            return i - col;
-        }
-    }
-    return WIDTH - col;
-}
-
-var grids = [ ];
-
-for (var i = 0; i < 50; i++) {
-    grids[i] = [ ];
-    for (var j = 0; j < WIDTH; j++) {
-        grids[i][j] = false;
-    }
-}
-
-function generatePosts() {
-    var g = getNextFreeGrid();
-    var startRow = g[0];
-    var startCol = g[1];
-
-    var size = randomSize(getMaxWidth(startRow, startCol));
-    var spanRow = size[0];
-    var spanCol = size[1];
-
-    var color = randomColor();
-
-    for (var j = startRow; j < startRow + spanRow; j++) {
-        for (var k = startCol; k < startCol + spanCol; k++) {
-            grids[j][k] = true;
-            /*
-            var id = "" + k + j;
-
-            $("#" + id).css('left', k * 100);
-            $("#" + id).css('top', j * 100);
-
-            $("#" + id).css('background', 'rgba(' + color[0] + ',' + color[1] + ',' + color[2] + ',' + 1 + ')');
-            */
-        }
-    }
-
-    var id = "" + startRow + startCol;
-    $("#wrapper").append("<div id='" + id + "' class='grid'></div>");
-    var left = startCol * (GRID_SIZE + INTERVAL);
-    var top = startRow * (GRID_SIZE + INTERVAL);
-    var width = spanCol * GRID_SIZE + (spanCol - 1) * INTERVAL;
-    var height = spanRow * GRID_SIZE + (spanRow - 1) * INTERVAL;
-
-    $("#" + id).css('left', left);
-    $("#" + id).css('top', top);
-    $("#" + id).css('width', width);
-    $("#" + id).css('height', height);
-    $("#" + id).css('background', 'rgba(' + color[0] + ',' + color[1] + ',' + color[2] + ',' + 1 + ')');
-}
 
 plans = [ ];
 
@@ -219,21 +114,20 @@ plans[5] = [
 ];
 
 
-$(function() {
+$(window).load(function() {
     var grid_id = 0;
     var last_grid_height = 0;
-    var num_rest = NUM_GRIDS;
+    var num_rest = images.length;
     var last_plan;
 
+    var image_index = 0;
+
     while (num_rest > 0) {
-        console.log(num_rest);
         var num_to_arrange;
         if (num_rest >= 5) {
             num_to_arrange = Math.ceil(Math.random() * 3) + 2;
-            console.log("arrange: " + num_to_arrange);
         } else {
             num_to_arrange = num_rest;
-            console.log("last arrange: " + num_to_arrange);
         }
         num_rest -= num_to_arrange;
 
@@ -250,13 +144,38 @@ $(function() {
             var top = grid.row * (GRID_SIZE + INTERVAL);
             var width = grid.width * (GRID_SIZE + INTERVAL) - INTERVAL;
             var height = grid.height * (GRID_SIZE + INTERVAL) - INTERVAL;
-            var color = randomColor();
 
-            $("#" + grid_id).css('left', left);
-            $("#" + grid_id).css('top', top + last_grid_height);
-            $("#" + grid_id).css('width', width);
-            $("#" + grid_id).css('height', height);
-            $("#" + grid_id).css('background', 'rgba(' + color[0] + ',' + color[1] + ',' + color[2] + ',' + 1 + ')');
+            var grid_div = $("#" + grid_id);
+            grid_div.css('left', left);
+            grid_div.css('top', top + last_grid_height);
+            grid_div.css('width', width);
+            grid_div.css('height', height);
+
+            var img = new Image();
+            img.src = images[grid_id];
+
+            grid_div.html(img);
+
+            var image_width_by_height = img.width / img.height;
+            var container_width_by_height = width / height;
+
+            if (container_width_by_height > image_width_by_height) { // container "fatter" than image
+                var ratio = img.width / width;
+                var new_width = width;
+                var new_height = img.height * width / img.width;
+                var margin_top = (height - new_height) / 2;
+                $(img).css('width', new_width);
+                $(img).css('height', new_height);
+                $(img).css('margin-top', margin_top);
+            } else { // container "thinner" than image
+                var ratio = img.height / height;
+                var new_height = height;
+                var new_width = img.width * height / img.height;
+                var margin_left = (width - new_width) / 2;
+                $(img).css('width', new_width);
+                $(img).css('height', new_height);
+                $(img).css('margin-left', margin_left);
+            }
 
             if (top + height > max_grid_height) {
                 max_grid_height = top + height;

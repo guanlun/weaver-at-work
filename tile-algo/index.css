@@ -6,10 +6,10 @@ html, body {
 }
 
 .grid {
-    width: 100px;
-    height: 100px;
+    margin-left: 400px;
     position: absolute;
     cursor: pointer;
+    overflow: hidden;
 
     -webkit-transition: opacity, 0.3s;
 }
