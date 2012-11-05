@@ -5,8 +5,11 @@ html, body {
 #wrapper {
 }
 
+.smart_tile_container {
+    visibility: hidden;
+}
+
 .grid {
-    margin-left: 400px;
     position: absolute;
     cursor: pointer;
     overflow: hidden;

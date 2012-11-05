@@ -1,120 +1,117 @@
-var images = [
-    "images/image1.jpg",
-    "images/image2.jpg",
-    "images/image3.jpg",
-    "images/image4.jpg",
-    "images/image5.jpg",
-    "images/image6.jpg",
-    "images/image7.jpg",
-    "images/image8.jpg",
-    "images/image9.jpg",
-    "images/image10.jpg",
-    "images/image11.jpeg",
-    "images/image12.jpeg",
-    "images/image13.jpeg",
-    "images/image14.jpeg",
-    "images/image15.jpeg",
-    "images/image16.jpeg",
-];
+jQuery.fn.smart_tiles = function() {
+    var args = arguments[0] || {}; // arguments from the caller
 
-var WIDTH = 5;
-var GRID_SIZE = 100;
-var INTERVAL = 10;
+    var images = [ ];
 
-plans = [ ];
+    var container = $(this);
+    container.find("img").each(function() {
+        images.push($(this).attr("src"));
+    });
 
-plans[1] = [
-    [
-        { row: 0, col: 0, width: 5, height: 3 },
-    ],
-    [
-        { row: 0, col: 0, width: 5, height: 4 },
-    ],
-];
+    container.find("img").each(function() {
+        $(this).remove();
+    });
 
-plans[2] = [
-    [
-        { row: 0, col: 0, width: 3, height: 3 },
-        { row: 0, col: 3, width: 2, height: 3 },
-    ],
-    [
-        { row: 0, col: 0, width: 2, height: 3 },
-        { row: 0, col: 2, width: 3, height: 3 },
-    ],
-];
+    var WIDTH = 5;
+    var INTERVAL = args.interval || 5;
 
-plans[3] = [
-    [
-        { row: 0, col: 0, width: 3, height: 4 },
-        { row: 0, col: 3, width: 2, height: 2 },
-        { row: 2, col: 3, width: 2, height: 2 },
-    ],
-    [
-        { row: 0, col: 0, width: 2, height: 2 },
-        { row: 2, col: 0, width: 2, height: 2 },
-        { row: 0, col: 2, width: 3, height: 4 },
-    ],
-    [
-        { row: 0, col: 0, width: 5, height: 3 },
-        { row: 3, col: 0, width: 2, height: 2 },
-        { row: 3, col: 2, width: 3, height: 2 },
-    ],
-];
+    var CONTAINER_WIDTH = args.width || 520;
 
-plans[4] = [
-    [
-        { row: 0, col: 0, width: 3, height: 2 },
-        { row: 0, col: 3, width: 2, height: 2 },
-        { row: 2, col: 0, width: 2, height: 2 },
-        { row: 2, col: 2, width: 3, height: 2 },
-    ],
-    [
-        { row: 0, col: 0, width: 2, height: 4 },
-        { row: 0, col: 2, width: 3, height: 2 },
-        { row: 2, col: 2, width: 2, height: 2 },
-        { row: 2, col: 4, width: 1, height: 2 },
-    ],
-    [
-        { row: 0, col: 0, width: 3, height: 5 },
-        { row: 0, col: 3, width: 2, height: 2 },
-        { row: 2, col: 3, width: 2, height: 2 },
-        { row: 4, col: 3, width: 2, height: 1 },
-    ],
-];
+    var GRID_SIZE = (CONTAINER_WIDTH - 4 * INTERVAL) / 5;
 
-plans[5] = [
-    [
-        { row: 0, col: 0, width: 2, height: 4 },
-        { row: 0, col: 2, width: 3, height: 2 },
-        { row: 2, col: 2, width: 3, height: 3 },
-        { row: 4, col: 0, width: 1, height: 1 },
-        { row: 4, col: 1, width: 1, height: 1 },
-    ],
-    [
-        { row: 0, col: 0, width: 4, height: 3 },
-        { row: 0, col: 4, width: 1, height: 2 },
-        { row: 2, col: 4, width: 1, height: 3 },
-        { row: 3, col: 0, width: 2, height: 2 },
-        { row: 3, col: 2, width: 2, height: 2 },
-    ],
-    [
-        { row: 0, col: 0, width: 2, height: 2 },
-        { row: 0, col: 2, width: 3, height: 4 },
-        { row: 2, col: 0, width: 2, height: 3 },
-        { row: 4, col: 2, width: 1, height: 1 },
-        { row: 4, col: 3, width: 2, height: 1 },
-    ],
-    [
-        { row: 0, col: 0, width: 1, height: 1 },
-        { row: 0, col: 1, width: 1, height: 1 },
-        { row: 0, col: 2, width: 3, height: 3 },
-        { row: 1, col: 0, width: 2, height: 4 },
-        { row: 3, col: 2, width: 3, height: 2 },
-    ],
-];
+    plans = [ ];
+
+    plans[1] = [
+        [
+            { row: 0, col: 0, width: 5, height: 3 },
+        ],
+        [
+            { row: 0, col: 0, width: 5, height: 4 },
+        ],
+    ];
+
+    plans[2] = [
+        [
+            { row: 0, col: 0, width: 3, height: 3 },
+            { row: 0, col: 3, width: 2, height: 3 },
+        ],
+        [
+            { row: 0, col: 0, width: 2, height: 3 },
+            { row: 0, col: 2, width: 3, height: 3 },
+        ],
+    ];
+
+    plans[3] = [
+        [
+            { row: 0, col: 0, width: 3, height: 4 },
+            { row: 0, col: 3, width: 2, height: 2 },
+            { row: 2, col: 3, width: 2, height: 2 },
+        ],
+        [
+            { row: 0, col: 0, width: 2, height: 2 },
+            { row: 2, col: 0, width: 2, height: 2 },
+            { row: 0, col: 2, width: 3, height: 4 },
+        ],
+        [
+            { row: 0, col: 0, width: 5, height: 3 },
+            { row: 3, col: 0, width: 2, height: 2 },
+            { row: 3, col: 2, width: 3, height: 2 },
+        ],
+    ];
+
+    plans[4] = [
+        [
+            { row: 0, col: 0, width: 3, height: 2 },
+            { row: 0, col: 3, width: 2, height: 2 },
+            { row: 2, col: 0, width: 2, height: 2 },
+            { row: 2, col: 2, width: 3, height: 2 },
+        ],
+        [
+            { row: 0, col: 0, width: 2, height: 4 },
+            { row: 0, col: 2, width: 3, height: 2 },
+            { row: 2, col: 2, width: 2, height: 2 },
+            { row: 2, col: 4, width: 1, height: 2 },
+        ],
+        [
+            { row: 0, col: 0, width: 3, height: 5 },
+            { row: 0, col: 3, width: 2, height: 2 },
+            { row: 2, col: 3, width: 2, height: 2 },
+            { row: 4, col: 3, width: 2, height: 1 },
+        ],
+    ];
+
+    plans[5] = [
+        [
+            { row: 0, col: 0, width: 2, height: 4 },
+            { row: 0, col: 2, width: 3, height: 2 },
+            { row: 2, col: 2, width: 3, height: 3 },
+            { row: 4, col: 0, width: 1, height: 1 },
+            { row: 4, col: 1, width: 1, height: 1 },
+        ],
+        [
+            { row: 0, col: 0, width: 4, height: 3 },
+            { row: 0, col: 4, width: 1, height: 2 },
+            { row: 2, col: 4, width: 1, height: 3 },
+            { row: 3, col: 0, width: 2, height: 2 },
+            { row: 3, col: 2, width: 2, height: 2 },
+        ],
+        [
+            { row: 0, col: 0, width: 2, height: 2 },
+            { row: 0, col: 2, width: 3, height: 4 },
+            { row: 2, col: 0, width: 2, height: 3 },
+            { row: 4, col: 2, width: 1, height: 1 },
+            { row: 4, col: 3, width: 2, height: 1 },
+        ],
+        [
+            { row: 0, col: 0, width: 1, height: 1 },
+            { row: 0, col: 1, width: 1, height: 1 },
+            { row: 0, col: 2, width: 3, height: 3 },
+            { row: 1, col: 0, width: 2, height: 4 },
+            { row: 3, col: 2, width: 3, height: 2 },
+        ],
+    ];
 
 
-$(window).load(function() {
     var grid_id = 0;
     var last_grid_height = 0;
     var num_rest = images.length;
@@ -138,7 +135,7 @@ $(window).load(function() {
 
         for (i in plan) {
             var grid = plan[i];
-            $("#wrapper").append("<div id='" + grid_id + "' class='grid'></div>");
+            $(this).append("<div id='" + grid_id + "' class='grid'></div>");
 
             var left = grid.col * (GRID_SIZE + INTERVAL);
             var top = grid.row * (GRID_SIZE + INTERVAL);
@@ -185,4 +182,9 @@ $(window).load(function() {
         }
         last_grid_height += max_grid_height + INTERVAL;
     }
+    $(".smart_tile_container").css("visibility", "visible");
+}
+
+$(window).load(function() {
+    $("#wrapper").smart_tiles({ width: 1000, interval: 10 });
 });
