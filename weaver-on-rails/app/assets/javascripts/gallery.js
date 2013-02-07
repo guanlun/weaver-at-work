@@ -1,193 +1,191 @@
-jQuery.fn.gallery = function() {
-    var container = $(this);
-
+jQuery.fn.smart_tiles = function() {
     var args = arguments[0] || {}; // arguments from the caller
 
-    var img_width = 100;
-    var scroll_id = 0;
+    var images = [ ];
 
-    var img_id = 0; // 'src' of the last image to be displayed
-    
-    var mouse_clicked_on_img = 0; // 'src' of the image that is displayed (clicked)
-
-    var div_width = args.width || 400;
-    var div_height = args.height || 300;
-
-    var div_top = container.position().top;
-    var div_left = container.position().left;
-
-    var scroll = $('<div id=\'scroll\'></div>');
-    scroll.css('width', div_width);
-    scroll.css('overflow-x', 'hidden');
-    scroll.css('margin-top', '5px');
-
-    var inner_div = container.find('.gallery');
-    var inner_width = inner_div.find('img').length * img_width;
-    inner_div.css('width', inner_width);
-
-    scroll.append(inner_div);
-
-    var img_divs = inner_div.find('div');
-    img_divs.css('width', '70px');
-    img_divs.css('height', '60px');
-    img_divs.css('float', 'left');
-    img_divs.css('margin-left', '5px');
-    img_divs.css('margin-right', '5px');
-    img_divs.css('overflow', 'hidden');
-    img_divs.css('border', '1px solid #AAA');
-
-    var imgs = inner_div.find('img');
-    imgs.css('opacity', '0.3');
-
-    var img_title = $('<div id=\'img_title\'></div>');
-    img_title.css('width', div_width);
-    img_title.css('font-family', 'Arial');
-    img_title.css('color', '#999');
-    img_title.css('text-align', 'right');
-    img_title.css('padding-top', '2px');
-    img_title.css('font-size', '8pt');
-    img_title.html(' ');
-
-    container.append(img_title);
-    container.append(scroll);
-
-    imgs.load(function() {
-        var img_width = $(this).width();
-        var img_height = $(this).height();
-        if (img_width > img_height) { // landscape
-            $(this).css('height', '60px');
-        } else { // portrait
-            $(this).css('width', '80px');
-        }
+    var container = $(this);
+    container.find("img").each(function() {
+        images.push($(this).attr("src"));
     });
 
-    img_divs.mouseover(function() {
-        $(this).find('img').stop();
-        $(this).find('img').animate({
-            opacity: 0.8,
-        }, 200);
+    container.find("img").each(function() {
+        $(this).remove();
     });
 
-    img_divs.mouseout(function() {
-        $(this).find('img').stop();
-        if (mouse_clicked_on_img != $(this).find('img').attr('src')) {
-            $(this).find('img').animate({
-                opacity: 0.3,
-            }, 200);
-        }
-    });
+    var WIDTH = 5;
+    var INTERVAL = args.interval || 5;
 
-    var moving = false;
+    var CONTAINER_WIDTH = args.width || 520;
 
-    scroll.mousemove(function(e) {
-        function left() {
-            var curr_dis = scroll.scrollLeft();
-            scroll.scrollLeft(curr_dis - 2);
-        }
+    var GRID_SIZE = (CONTAINER_WIDTH - 4 * INTERVAL) / 5;
 
-        function right() {
-            var curr_dis = scroll.scrollLeft();
-            scroll.scrollLeft(curr_dis + 2);
-        }
+    plans = [ ];
 
-        var left_offset = e.pageX - scroll.offset().left;
-        var scroll_width = div_width / 5;
+    plans[1] = [
+        [
+            { row: 0, col: 0, width: 5, height: 3 },
+        ],
+        [
+            { row: 0, col: 0, width: 5, height: 4 },
+        ],
+    ];
 
-        if (left_offset < scroll_width) {
-            if (!moving) {
-                scroll_id = setInterval(left, 10);
-                moving = true;
-            }
-        } else if (left_offset > div_width - scroll_width) {
-            if (!moving) {
-                scroll_id = setInterval(right, 10);
-                moving = true;
-            }
+    plans[2] = [
+        [
+            { row: 0, col: 0, width: 3, height: 3 },
+            { row: 0, col: 3, width: 2, height: 3 },
+        ],
+        [
+            { row: 0, col: 0, width: 2, height: 3 },
+            { row: 0, col: 2, width: 3, height: 3 },
+        ],
+    ];
+
+    plans[3] = [
+        [
+            { row: 0, col: 0, width: 3, height: 4 },
+            { row: 0, col: 3, width: 2, height: 2 },
+            { row: 2, col: 3, width: 2, height: 2 },
+        ],
+        [
+            { row: 0, col: 0, width: 2, height: 2 },
+            { row: 2, col: 0, width: 2, height: 2 },
+            { row: 0, col: 2, width: 3, height: 4 },
+        ],
+        [
+            { row: 0, col: 0, width: 5, height: 3 },
+            { row: 3, col: 0, width: 2, height: 2 },
+            { row: 3, col: 2, width: 3, height: 2 },
+        ],
+    ];
+
+    plans[4] = [
+        [
+            { row: 0, col: 0, width: 3, height: 2 },
+            { row: 0, col: 3, width: 2, height: 2 },
+            { row: 2, col: 0, width: 2, height: 2 },
+            { row: 2, col: 2, width: 3, height: 2 },
+        ],
+        [
+            { row: 0, col: 0, width: 2, height: 4 },
+            { row: 0, col: 2, width: 3, height: 2 },
+            { row: 2, col: 2, width: 2, height: 2 },
+            { row: 2, col: 4, width: 1, height: 2 },
+        ],
+        [
+            { row: 0, col: 0, width: 3, height: 5 },
+            { row: 0, col: 3, width: 2, height: 2 },
+            { row: 2, col: 3, width: 2, height: 2 },
+            { row: 4, col: 3, width: 2, height: 1 },
+        ],
+    ];
+
+    plans[5] = [
+        [
+            { row: 0, col: 0, width: 2, height: 4 },
+            { row: 0, col: 2, width: 3, height: 2 },
+            { row: 2, col: 2, width: 3, height: 3 },
+            { row: 4, col: 0, width: 1, height: 1 },
+            { row: 4, col: 1, width: 1, height: 1 },
+        ],
+        [
+            { row: 0, col: 0, width: 4, height: 3 },
+            { row: 0, col: 4, width: 1, height: 2 },
+            { row: 2, col: 4, width: 1, height: 3 },
+            { row: 3, col: 0, width: 2, height: 2 },
+            { row: 3, col: 2, width: 2, height: 2 },
+        ],
+        [
+            { row: 0, col: 0, width: 2, height: 2 },
+            { row: 0, col: 2, width: 3, height: 4 },
+            { row: 2, col: 0, width: 2, height: 3 },
+            { row: 4, col: 2, width: 1, height: 1 },
+            { row: 4, col: 3, width: 2, height: 1 },
+        ],
+        [
+            { row: 0, col: 0, width: 1, height: 1 },
+            { row: 0, col: 1, width: 1, height: 1 },
+            { row: 0, col: 2, width: 3, height: 3 },
+            { row: 1, col: 0, width: 2, height: 4 },
+            { row: 3, col: 2, width: 3, height: 2 },
+        ],
+    ];
+
+
+    var grid_id = 0;
+    var last_grid_height = 0;
+    var num_rest = images.length;
+    var last_plan;
+
+    var image_index = 0;
+
+    while (num_rest > 0) {
+        var num_to_arrange;
+        if (num_rest >= 5) {
+            num_to_arrange = Math.ceil(Math.random() * 3) + 2;
         } else {
-            moving = false;
-            clearInterval(scroll_id);
+            num_to_arrange = num_rest;
         }
-    });
+        num_rest -= num_to_arrange;
 
-    scroll.mouseout(function() {
-        moving = false;
-        clearInterval(scroll_id);
-    });
+        var plan_arr = plans[num_to_arrange];
+        var plan = plan_arr[ Math.floor(Math.random() * plan_arr.length) ];
 
-    // large image display
-    container.prepend('<div id=\'' + container.attr('id') + '_large_display\'></div>');
-    var display = $('#' + container.attr('id') + '_large_display');
-    var display_width = div_width;
-    var display_height = div_height - scroll.height();
-    display.css('width', display_width);
-    display.css('height', display_height);
-    display.css('overflow', 'hidden');
+        var max_grid_height = 0;
 
-    function set_img(src) {
-        mouse_clicked_on_img = src;
-        img_id = src; // set the last image to the current one
-        var img = new Image();
-        img.src = src;
+        for (i in plan) {
+            var grid = plan[i];
+            $(this).append("<div id='" + grid_id + "' class='grid'></div>");
 
-        var width = img.width;
-        var height = img.height;
-        var width_ratio = width / display_width;
-        var height_ratio = height / display_height;
+            var left = grid.col * (GRID_SIZE + INTERVAL);
+            var top = grid.row * (GRID_SIZE + INTERVAL);
+            var width = grid.width * (GRID_SIZE + INTERVAL) - INTERVAL;
+            var height = grid.height * (GRID_SIZE + INTERVAL) - INTERVAL;
 
-        if (width_ratio < height_ratio) { // relatively portrait
-            if (img.width < img.height) { // portrait
-                width = width / height_ratio;
-                height = height / height_ratio;
-                display.css('text-align', 'right');
-            } else {
-                var margin_top = - (height - display_height) / 2;
-                $(img).css('margin-top', margin_top);
-            }
-        } else { // relatively landscape
-            width = width / width_ratio;
-            height = height / width_ratio;
-            var margin_top = (display_height - height) / 2;
-            if (margin_top > 0) {
-                $(img).css('margin-top', margin_top);
-            }
-        }
+            var grid_div = $("#" + grid_id);
+            grid_div.css('left', left);
+            grid_div.css('top', top + last_grid_height);
+            grid_div.css('width', width);
+            grid_div.css('height', height);
 
-        img.width = width;
-        img.height = height;
-        display.html(img);
-    }
-
-    imgs.click(function() {
-        imgs.animate({
-            opacity: 0.3,
-        }, 200);
-        $(this).stop();
-        $(this).css('opacity', '0.8');
-        src = $(this).attr('src');
-        if (img_id == src) {
-            return;
-        } else {
             var img = new Image();
-            img.src = src;
-            display.animate( {
-                opacity: 0.0,
-            }, 100, function() {
-                set_img(src);
-                display.animate( {
-                    opacity: 1.0,
-                }, 100);
-            });
+            img.src = images[grid_id];
+
+            grid_div.html(img);
+
+            var image_width_by_height = img.width / img.height;
+            var container_width_by_height = width / height;
+
+            if (container_width_by_height > image_width_by_height) { // container "fatter" than image
+                var ratio = img.width / width;
+                var new_width = width;
+                var new_height = img.height * width / img.width;
+                var margin_top = (height - new_height) / 2;
+                $(img).css('width', new_width);
+                $(img).css('height', new_height);
+                $(img).css('margin-top', margin_top);
+            } else { // container "thinner" than image
+                var ratio = img.height / height;
+                var new_height = height;
+                var new_width = img.width * height / img.height;
+                var margin_left = (width - new_width) / 2;
+                $(img).css('width', new_width);
+                $(img).css('height', new_height);
+                $(img).css('margin-left', margin_left);
+            }
+
+            if (top + height > max_grid_height) {
+                max_grid_height = top + height;
+            }
+
+            grid_id++;
         }
-        img_title.html($(this).attr('src'));
-    });
-        
-    set_img($(imgs.eq(0)).attr('src'));
-    img_title.html($(imgs.eq(0)).attr('src'));
-    /*
-    imgs.eq(0).load(function() { // when the first image is loaded, set it as the display image
-        $(this).css('opacity', '0.8');
-        set_img($(this).attr('src'));
-        img_title.html($(this).attr('src'));
-    });
-    */
-};
+        last_grid_height += max_grid_height + INTERVAL;
+    }
+    $(".smart_tile_container").css("visibility", "visible");
+}
+
+$(window).load(function() {
+    $("#wrapper").smart_tiles({ width: 600, interval: 10 });
+});
+

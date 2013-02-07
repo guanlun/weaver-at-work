@@ -1,2 +1,21 @@
-<h1>Gallery#list</h1>
-<p>Find me in app/views/gallery/list.html.erb</p>
+<%= stylesheet_link_tag "gallery" %>
+<%= javascript_include_tag "project_item" %>
+<%= render :partial => "elements/header" %>
+        <div id='container'>
+<%= render :partial => "elements/nav_bar" %>
+        	<div id='inner_container'>
+              <div id="wrapper" class="smart_tile_container">
+                <%= image_tag "image1.jpg" %>
+                <%= image_tag "image2.jpg" %>
+                <%= image_tag "image3.jpg" %>
+                <%= image_tag "image4.jpg" %>
+                <%= image_tag "image5.jpg" %>
+                <%= image_tag "image6.jpg" %>
+                <%= image_tag "image7.jpg" %>
+                <%= image_tag "image8.jpg" %>
+                <%= image_tag "image9.jpg" %>
+                <%= image_tag "image10.jpg" %>
+              </div>
+        	</div>
+        </div>
+<%= render :partial => "elements/footer" %>
