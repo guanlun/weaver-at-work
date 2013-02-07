@@ -1,0 +1,39 @@
+@font-face {
+  font-family:PlutoLight;
+  src:url("PlutoLight.ttf");
+}
+
+@font-face {
+  font-family:PlutoRounded;
+  src:url("PlutoRounded.ttf");
+}
+
+@font-face {
+  font-family:PlutoHeavy;
+  src:url("PlutoHeavy.ttf");
+}
+
+@font-face {
+  font-family:BetonBold;
+  src:url("BetonPExtBol.ttf");
+}
+
+@font-face {
+  font-family:BetonExtraBold;
+  src:url("CgBetonExtraBold.ttf");
+}
+
+@font-face {
+  font-family:Consolas;
+  src:url("Consolas.ttf");
+}
+
+@font-face {
+  font-family:GeoLightOblique;
+  src:url("GeoLightOblique-Oblique.ttf");
+}
+
+@font-face {
+  font-family:LoraRegular;
+  src:url("Lora-Regular.ttf");
+}
