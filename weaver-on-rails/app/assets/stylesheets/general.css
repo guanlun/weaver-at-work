@@ -4,7 +4,7 @@ html {
 
 body {
   margin: 0;
-	overflow-x:hidden;
+  overflow-x:hidden;
   background:url('bg_texture.jpg');
 }
 
@@ -19,7 +19,8 @@ a:visited {
 }
 
 #container {
-  width: 100%;
+	margin:0 auto;
+	width:600px;
 }
 
 #inner_container {

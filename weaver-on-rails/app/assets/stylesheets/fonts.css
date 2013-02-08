@@ -37,3 +37,8 @@
   font-family:LoraRegular;
   src:url("Lora-Regular.ttf");
 }
+
+@font-face {
+  font-family:TimesNewRoman;
+  src:url("Times-New-Roman.ttf");
+}

@@ -1,7 +1,44 @@
-#texts_list_container {
+#text_list_container {
 	margin-top:30px;
-	width:450px;
-	font-family:PlutoLight;
+	font-family:LoraRegular;
 	font-size:10pt;
 	text-align:justify;
+}
+
+#text_list_title {
+	font-family:LoraRegular;
+  float: right;
+  font-size: 24pt;
+  margin-right: 60px;
+}
+
+#text_list_container {
+  margin-top: 40px;
+}
+
+.text_item {
+  margin-top: 25px;
+}
+
+.text_item_title {
+  font-size: 16pt;
+}
+
+.text_item_datetime {
+  float: right;
+  margin-top: -5px;
+  color: #666;
+}
+
+.text_item_quote {
+  margin-top: 5px;
+  font-family: TimesNewRoman;
+  font-size: 60px;
+  color: #aaa;
+}
+
+.text_item_content {
+  margin-top: -45px;
+  text-indent: 35px;
+  color: #666;
 }
