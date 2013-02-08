@@ -6,33 +6,26 @@
               <div id="text_list_title">texts</div>
               <div id="text_list_container">
 
-                <div class="text_item">
-                  <div class="text_item_title">Learning Blender</div>
-                  <div class="text_item_datetime">Feb 8, 2013</div>
-                  <div class="text_item_quote">“</div>
-                  <div class="text_item_content">
-                    He arrived at Boston aboard Vancouver the ship and gambled He arrived at Boston aboard Vancouver the ship and gambled He arrived at Boston aboard Vancouver the ship and gambled 
+                <% @texts.each do |t| %>
+                  <div class="text_item">
+                    <div class="text_item_title"><%= link_to t.title, t.id.to_s %></div>
+                    <div class="text_item_datetime"><%= t.created_at.strftime("%a, %b %d, %Y") %></div>
+                    <div class="text_item_quote">“</div>
+                    <div class="text_item_content">
+                      <% if t.content.length > 250 %>
+                        <% content = t.content %>
+                        <% curr = 250 %>
+                        <% while content[curr] != " " do %>
+                          <% curr += 1 %>
+                        <% end %>
+                        <%= t.content[0 .. curr] + " ..."%>
+                      <% else %>
+                        <%= t.content %>
+                      <% end %>
+                    </div>
                   </div>
-                </div>
-
-                <div class="text_item">
-                  <div class="text_item_title">中文的标题</div>
-                  <div class="text_item_datetime">Feb 8, 2013</div>
-                  <div class="text_item_quote">“</div>
-                  <div class="text_item_content">
-                    阿斯顿发生都嘎哈是否会噶啥反倒是噶是对方根本差点让热特阿斯顿发生都嘎哈是否会噶啥反倒是噶是对方根本差点让热特阿斯顿发生都嘎哈是否会噶啥反倒是噶是对方根本差点让热特
-                  </div>
-                </div>
-
-                <div class="text_item">
-                  <div class="text_item_title">Learning Blender</div>
-                  <div class="text_item_datetime">Feb 8, 2013</div>
-                  <div class="text_item_quote">“</div>
-                  <div class="text_item_content">
-                    He arrived at Boston aboard Vancouver the ship and gambled He arrived at Boston aboard Vancouver the ship and gambled He arrived at Boston aboard Vancouver the ship and gambled 
-                  </div>
-                </div>
-
+                <% end %>
+                
               </div>
 	        	</div>
 	        </div>
