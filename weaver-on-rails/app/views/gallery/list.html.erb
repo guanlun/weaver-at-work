@@ -1,9 +1,24 @@
-<%= stylesheet_link_tag "gallery" %>
-<%= javascript_include_tag "project_item" %>
+<%= stylesheet_link_tag "galleries" %>
 <%= render :partial => "elements/header" %>
         <div id='container'>
 <%= render :partial => "elements/nav_bar" %>
         	<div id='inner_container'>
+              <div id="gallery_list_title">gallery</div>
+              <div id="gallery_list_container">
+                <% if @galleries.empty? %>
+                  No Gallery Available
+                <% else %>
+                  <% @galleries.each do |g| %>
+                    <div class="gallery_item">
+                      <div class="gallery_item_title"><%= g.title %></div>
+                      <div class="gallery_item_datetime"><%= g.created_at.strftime("%a, %b %d, %Y") %></div>
+                      <div class="gallery_item_content"><%= g.description %></div>
+                      <div class="gallery_item_thumbnail"><%= image_tag g.pictures[0].link %></div>
+                    </div>
+                  <% end %>
+                <% end %>
+              </div>
+<!--
               <div id="wrapper" class="smart_tile_container">
                 <%= image_tag "image1.jpg" %>
                 <%= image_tag "image2.jpg" %>
@@ -16,6 +31,7 @@
                 <%= image_tag "image9.jpg" %>
                 <%= image_tag "image10.jpg" %>
               </div>
+-->
         	</div>
         </div>
 <%= render :partial => "elements/footer" %>

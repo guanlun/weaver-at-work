@@ -1,14 +1,15 @@
 WeaverOnRails::Application.routes.draw do
-  match "/", :to => "home#index"
+  get "/", :to => "home#index"
 
-  match "/about", :to => "home#about"
+  get "/about", :to => "home#about"
 
-  match "/texts", :to => "text#list"
-  match "/texts/:id", :to => "text#show"
+  get "/texts", :to => "text#list"
+  get "/texts/:id", :to => "text#show"
+  post "/texts/:id/add_comment", :to => "text#add_comment"
 
-  match "/projects", :to => "project#list"
+  get "/projects", :to => "project#list"
 
-  match "/gallery", :to => "gallery#list"
+  get "/gallery", :to => "gallery#list"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

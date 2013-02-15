@@ -1,45 +1,47 @@
-#text_list_title {
+#gallery_list_title {
 	font-family:LoraRegular;
   float: right;
   font-size: 24pt;
   margin-right: 60px;
 }
 
-#text_list_container {
-  margin-top: 40px;
+#gallery_list_container {
+	margin-top:40px;
 	font-family:LoraRegular;
 	font-size:10pt;
 	text-align:justify;
 }
 
-.text_item {
+.gallery_item {
   margin-top: 25px;
 }
 
-.text_item_title {
+.gallery_item_title {
   font-size: 16pt;
   cursor: pointer;
 }
 
-.text_item_title:hover {
+.gallery_item_title:hover {
   text-decoration: underline;
 }
 
-.text_item_datetime {
+.gallery_item_datetime {
   float: right;
   margin-top: -5px;
   color: #666;
 }
 
-.text_item_quote {
-  margin-top: 5px;
-  font-family: TimesNewRoman;
-  font-size: 60px;
-  color: #aaa;
-}
-
-.text_item_content {
-  margin-top: -45px;
+.gallery_item_content {
   text-indent: 35px;
   color: #666;
+}
+
+.gallery_item_thumbnail {
+  width: 100px;
+  height: 80px;
+}
+
+.gallery_item_thumbnail img {
+  width: inherit;
+  height: inherit;
 }

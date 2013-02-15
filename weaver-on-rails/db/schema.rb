@@ -11,20 +11,54 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130207125232) do
+ActiveRecord::Schema.define(:version => 20130215033943) do
+
+  create_table "galleries", :force => true do |t|
+    t.string   "title"
+    t.string   "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "pictures", :force => true do |t|
+    t.string   "title"
+    t.string   "description"
+    t.string   "link"
+    t.integer  "gallery_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "pictures", ["gallery_id"], :name => "index_pictures_on_gallery_id"
 
   create_table "projects", :force => true do |t|
     t.string   "title"
     t.text     "content"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "category"
+    t.string   "time"
+    t.string   "developers"
+    t.string   "images"
   end
+
+  create_table "text_comments", :force => true do |t|
+    t.string   "name"
+    t.string   "content"
+    t.integer  "text_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "text_comments", ["text_id"], :name => "index_text_comments_on_text_id"
 
   create_table "texts", :force => true do |t|
     t.string   "title"
     t.text     "content"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "category"
+    t.string   "image"
   end
 
 end

@@ -16,12 +16,6 @@
 	overflow:hidden;
 	background:rgba(255, 255, 255, 0);
 	cursor:default;
-	
-	-webkit-transition:background 0.2s;
-}
-
-.gallery_item:hover {
-	background:rgba(255, 255, 255, 0.4);
 }
 
 .gallery_item_cover_container {

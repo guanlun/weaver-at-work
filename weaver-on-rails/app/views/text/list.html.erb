@@ -12,15 +12,15 @@
                     <div class="text_item_datetime"><%= t.created_at.strftime("%a, %b %d, %Y") %></div>
                     <div class="text_item_quote">“</div>
                     <div class="text_item_content">
-                      <% if t.content.length > 250 %>
-                        <% content = t.content %>
+                      <% content = raw t.content %>
+                      <% if content.length > 250 %>
                         <% curr = 250 %>
                         <% while content[curr] != " " do %>
                           <% curr += 1 %>
                         <% end %>
-                        <%= t.content[0 .. curr] + " ..."%>
+                        <%= content[0 .. curr] + " ..."%>
                       <% else %>
-                        <%= t.content %>
+                        <%= content %>
                       <% end %>
                     </div>
                   </div>

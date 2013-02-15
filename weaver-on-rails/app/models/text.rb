@@ -1,3 +1,4 @@
 class Text < ActiveRecord::Base
-  attr_accessible :content, :title
+  has_many :text_comments
+  attr_accessible :content, :title, :category, :image
 end
