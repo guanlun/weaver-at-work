@@ -1,6 +1,5 @@
 #project_item_title_text {
 	text-align:right;
-	font-family:LoraRegular;
 	font-size:20pt;
 	margin-right:40px;
 }
@@ -20,7 +19,6 @@
 }
 
 .project_item_info_entry {
-	font-family:LoraRegular;
 	font-size:12pt;
 }
 
@@ -75,7 +73,6 @@
 
 #project_item_text_container {
 	margin-top:30px;
-	font-family:LoraRegular;
 	font-size:11pt;
 	color:#333;
 }

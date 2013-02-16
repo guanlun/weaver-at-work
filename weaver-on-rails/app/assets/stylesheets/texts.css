@@ -1,5 +1,4 @@
 #text_list_title {
-	font-family:LoraRegular;
   float: right;
   font-size: 24pt;
   margin-right: 60px;
@@ -7,9 +6,8 @@
 
 #text_list_container {
   margin-top: 40px;
-	font-family:LoraRegular;
-	font-size:10pt;
-	text-align:justify;
+  font-size:10pt;
+  text-align:justify;
 }
 
 .text_item {
@@ -21,8 +19,13 @@
   cursor: pointer;
 }
 
-.text_item_title:hover {
-  text-decoration: underline;
+.text_item_title a {
+  color: #a03 !important;
+  -webkit-transition: color 0.4s;
+}
+
+.text_item_title:hover a {
+  color: #333 !important;
 }
 
 .text_item_datetime {
@@ -33,7 +36,7 @@
 
 .text_item_quote {
   margin-top: 5px;
-  font-family: TimesNewRoman;
+  font-family: serif;
   font-size: 60px;
   color: #aaa;
 }

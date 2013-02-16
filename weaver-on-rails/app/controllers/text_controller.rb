@@ -8,7 +8,7 @@ class TextController < ApplicationController
   end
 
   def add_comment
-    @text = Text.find params[:id]
+    @text = Text.find params[:id].to_i
     comment = @text.text_comments.create
     comment.name = params[:name]
     comment.content = params[:content]
