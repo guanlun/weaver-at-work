@@ -15,7 +15,12 @@
             	<div id='banner_content'>
                     <span id='banner_weaver_part'>weaver</span>
                     <span id='banner_contact_part'>
-                      <%= link_to "My Github", "https://github.com/guanlun/" %>
+                      <a id="github_link">My Github</a>
+                      <script>
+                        document.getElementById("github_link").onclick = function() {
+                          window.location = "http://github.com/guanlun";
+                        };
+                      </script>
                     </span>
                 </div>
             </div>
