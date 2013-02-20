@@ -1,2 +1,26 @@
-<h1>Gallery#show</h1>
-<p>Find me in app/views/gallery/show.html.erb</p>
+<%= stylesheet_link_tag "gallery" %>
+<%= render :partial => "elements/header" %>
+        <div id='container'>
+<%= render :partial => "elements/nav_bar" %>
+            <div id='inner_container'>
+              <div id='gallery_item_title_text'>
+                <%= @gallery.title %>
+              </div>
+	        	</div>
+
+            <div id="gallery_info_container">
+              <div id="gallery_item_date_text"><%= @gallery.created_at.strftime("%a, %b, %d, %Y") %></div>
+              <div id="gallery_item_description_text"><%= @gallery.description %></div>
+            </div>
+
+            <div id="gallery_wrapper" class="smart_tile_container">
+              <% @gallery.pictures.each do |p| %>
+                <%= image_tag p.link %>
+              <% end %>
+            </div>
+            <%= render :partial => "elements/social_buttons" %>
+
+	        </div>
+
+        </div>
+<%= render :partial => "elements/footer" %>

@@ -1,17 +1,19 @@
-<%= stylesheet_link_tag "texts" %>
+<%= stylesheet_link_tag "list_page" %>
 <%= render :partial => "elements/header" %>
         <div id='container'>
 <%= render :partial => "elements/nav_bar" %>
             <div id='inner_container'>
-              <div id="text_list_title">texts</div>
-              <div id="text_list_container">
+              <div id="list_title">texts</div>
+              <div id="list_container">
 
                 <% @texts.each do |t| %>
-                  <div class="text_item">
-                    <div class="text_item_title"><%= link_to t.title, t.id.to_s %></div>
-                    <div class="text_item_datetime"><%= t.created_at.strftime("%a, %b %d, %Y") %></div>
-                    <div class="text_item_quote">“</div>
-                    <div class="text_item_content">
+                  <div class="list_item">
+                    <div class="list_item_title"><%= link_to t.title, t.id.to_s %></div>
+                    <div class="list_item_datetime"><%= t.created_at.strftime("%a, %b %d, %Y") %></div>
+                    <div class="list_item_quote">“</div>
+                    <div class="list_item_content">
+                      <%= t.description %>
+                      <!--
                       <% content = raw t.content %>
                       <% if content.length > 250 %>
                         <% curr = 250 %>
@@ -22,6 +24,7 @@
                       <% else %>
                         <%= content %>
                       <% end %>
+                      -->
                     </div>
                   </div>
                 <% end %>

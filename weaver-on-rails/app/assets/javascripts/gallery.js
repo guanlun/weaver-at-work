@@ -182,10 +182,10 @@ jQuery.fn.smart_tiles = function() {
         }
         last_grid_height += max_grid_height + INTERVAL;
     }
-    $(".smart_tile_container").css("visibility", "visible");
+    container.css("visibility", "visible");
+    $("#social_button_container").css("margin-top", last_grid_height + 50);
 }
 
 $(window).load(function() {
-    $("#wrapper").smart_tiles({ width: 600, interval: 10 });
+    $("#gallery_wrapper").smart_tiles({ width: 600, interval: 10 });
 });
-

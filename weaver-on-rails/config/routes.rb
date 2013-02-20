@@ -14,6 +14,7 @@ WeaverOnRails::Application.routes.draw do
   get "/projects", :to => "project#list"
 
   get "/gallery", :to => "gallery#list"
+  get "/gallery/:id", :to => "gallery#show"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

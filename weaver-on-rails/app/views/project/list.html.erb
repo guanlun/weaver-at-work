@@ -1,14 +1,15 @@
-<%= stylesheet_link_tag "projects" %>
+<%= stylesheet_link_tag "list_page" %>
 <%= render :partial => "elements/header" %>
         <div id='container'>
 <%= render :partial => "elements/nav_bar" %>
         	<div id='inner_container'>
-              <div id="project_list_title">projects</div>
-              <div id="project_list_container">
+              <div id="list_title">projects</div>
+              <div id="list_container">
                 <% @projects.each do |p| %>
-                  <div class="project_item">
-                    <div class="project_item_title"><%= p.title %></div>
-                    <div class="project_item_datetime"><%= p.created_at.strftime("%a, %b %d, %Y") %></div>
+                  <div class="list_item">
+                    <div class="list_item_title"><%= link_to p.title, p.id.to_s %></div>
+                    <div class="list_item_datetime"><%= p.created_at.strftime("%a, %b %d, %Y") %></div>
+                    <div class="list_item_quote">“</div>
                   </div>
                 <% end %>
               </div>
