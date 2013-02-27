@@ -71,12 +71,14 @@ jQuery.fn.smart_tiles = function() {
             { row: 2, col: 0, width: 2, height: 2 },
             { row: 2, col: 2, width: 3, height: 2 },
         ],
+        /*
         [
             { row: 0, col: 0, width: 2, height: 4 },
             { row: 0, col: 2, width: 3, height: 2 },
             { row: 2, col: 2, width: 2, height: 2 },
             { row: 2, col: 4, width: 1, height: 2 },
         ],
+        */
         [
             { row: 0, col: 0, width: 3, height: 5 },
             { row: 0, col: 3, width: 2, height: 2 },
@@ -94,7 +96,6 @@ jQuery.fn.smart_tiles = function() {
             { row: 4, col: 0, width: 1, height: 1 },
             { row: 4, col: 1, width: 1, height: 1 },
         ],
-        */
         [
             { row: 0, col: 0, width: 4, height: 3 },
             { row: 0, col: 4, width: 1, height: 2 },
@@ -102,7 +103,6 @@ jQuery.fn.smart_tiles = function() {
             { row: 3, col: 0, width: 2, height: 2 },
             { row: 3, col: 2, width: 2, height: 2 },
         ],
-        /*
         [
             { row: 0, col: 0, width: 2, height: 2 },
             { row: 0, col: 2, width: 3, height: 4 },
@@ -130,8 +130,8 @@ jQuery.fn.smart_tiles = function() {
 
     while (num_rest > 0) {
         var num_to_arrange;
-        if (num_rest >= 5) {
-            num_to_arrange = Math.ceil(Math.random() * 3) + 2;
+        if (num_rest >= 4) {
+            num_to_arrange = Math.ceil(Math.random() * 2) + 2;
         } else {
             num_to_arrange = num_rest;
         }

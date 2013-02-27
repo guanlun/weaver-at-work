@@ -21,14 +21,16 @@
 
 .text_item_info_entry {
   font-size:12pt;
+  margin-top: 5px;
 }
 
 .text_item_info_title {
-  
+  font-style: italic;
 }
 
 .text_item_info_value {
   margin-left:30px;
+  color: #666;
 }
 
 #text_item_image_container {

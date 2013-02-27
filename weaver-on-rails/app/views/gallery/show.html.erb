@@ -25,14 +25,18 @@
               <div id="comment_title">comments</div>
               <div id="comment_list">
                 <% comments = @gallery.gallery_comments %>
-                <% comments.each do |c| %>
-                  <div class="comment_item">
-                    <div class="comment_name"><%= c.name %></div>
-                    <div class="comment_datetime"><%= c.created_at.strftime("%a, %b %d, %Y") %></div>
-                    <article>
-                      <div class="comment_content"><%= c.content %></div>
-                    </article>
-                  </div>
+                <% if comments.empty? %>
+                  No comment now. Be the first one to comment!
+                <% else %>
+                  <% comments.each do |c| %>
+                    <div class="comment_item">
+                      <div class="comment_name"><%= c.name %></div>
+                      <div class="comment_datetime"><%= c.created_at.strftime("%a, %b %d, %Y") %></div>
+                      <article>
+                        <div class="comment_content"><%= c.content %></div>
+                      </article>
+                    </div>
+                  <% end %>
                 <% end %>
               </div>
 

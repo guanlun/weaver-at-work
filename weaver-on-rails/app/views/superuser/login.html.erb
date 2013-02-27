@@ -1,0 +1,17 @@
+<input id="login" type="password" name="login" />
+<button id="button">Login</button>
+<script>
+  $("#button").click(function() {
+    $.ajax({
+      url: "/superuser/auth",
+      type: "POST",
+      data: { login: $("#login").val() }
+    }).done(function(data) {
+      if (data == "wrong") {
+        alert(data);
+      } else if (data == "success") {
+        window.location = "/superuser/interface";
+      }
+    });
+  });
+</script>
