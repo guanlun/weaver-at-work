@@ -1,4 +1,5 @@
 <%= stylesheet_link_tag "gallery" %>
+<%= stylesheet_link_tag "comments" %>
 <%= render :partial => "elements/header" %>
         <div id='container'>
 <%= render :partial => "elements/nav_bar" %>
@@ -15,12 +16,37 @@
 
             <div id="gallery_wrapper" class="smart_tile_container">
               <% @gallery.pictures.each do |p| %>
-                <%= image_tag p.link %>
+                <%= image_tag p.link, :data => { :title => p.title, :description => p.description } %>
               <% end %>
             </div>
             <%= render :partial => "elements/social_buttons" %>
 
-	        </div>
+            <div id="comment_container">
+              <div id="comment_title">comments</div>
+              <div id="comment_list">
+                <% comments = @gallery.gallery_comments %>
+                <% comments.each do |c| %>
+                  <div class="comment_item">
+                    <div class="comment_name"><%= c.name %></div>
+                    <div class="comment_datetime"><%= c.created_at.strftime("%a, %b %d, %Y") %></div>
+                    <article>
+                      <div class="comment_content"><%= c.content %></div>
+                    </article>
+                  </div>
+                <% end %>
+              </div>
 
+              <div id="comment_form_container">
+                <div id="comment_form_title">write your comment</div>
+                <%= form_tag @gallery.id.to_s + "/add_comment", :method => "post" do %>
+                  <%= label_tag :name, "name" %>
+                  <%= text_field_tag(:name) %><br />
+                  <%= label_tag :content, "comment" %><br />
+                  <%= text_area_tag(:content) %><br />
+                  <%= submit_tag("submit") %>
+                <% end %>
+              </div>
+            </div>
+	        </div>
         </div>
 <%= render :partial => "elements/footer" %>

@@ -1,4 +1,5 @@
 var IMAGE_WIDTH = 100;
+var IMAGE_MARGIN_LEFT = 10;
 
 var parsePx = function(px) {
   if (typeof px == "number") { // no need to parse.
@@ -16,7 +17,7 @@ var GalleryList = function(container) {
 
     this.images = this.list_el.getElementsByTagName("img"); // image list
 
-    this.width = (this.images.length * IMAGE_WIDTH) + "px";
+    this.width = ((this.images.length * IMAGE_WIDTH) + (this.images.length - 1) * IMAGE_MARGIN_LEFT) + "px";
     this.list_el.style.width = this.width;
 
     this.container_el.onmouseover = this.mouseMove.bind(this);

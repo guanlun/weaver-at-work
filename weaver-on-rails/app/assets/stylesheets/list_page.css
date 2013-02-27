@@ -62,12 +62,26 @@
 
 .list_item_gallery_list {
   height: inherit;
+  margin-top: 10px;
 }
 
 .list_item_gallery_item {
   float: left;
   width: 100px;
   height: 80px;
+  margin-left: 10px;
+  opacity: 0.6;
+  -webkit-transition: opacity 0.5s;
+  box-shadow: 0px 0px 3px #000;
+  cursor: pointer;
+}
+
+.list_item_gallery_item:first-child {
+  margin-left: 0;
+}
+
+.list_item_gallery_item:hover {
+  opacity: 0.9;
 }
 
 .list_item_gallery_item img {

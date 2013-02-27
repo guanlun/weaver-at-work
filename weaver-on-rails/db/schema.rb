@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130219005509) do
+ActiveRecord::Schema.define(:version => 20130227131914) do
 
   create_table "galleries", :force => true do |t|
     t.string   "title"
@@ -19,6 +19,16 @@ ActiveRecord::Schema.define(:version => 20130219005509) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
+
+  create_table "gallery_comments", :force => true do |t|
+    t.string   "name"
+    t.string   "content"
+    t.integer  "gallery_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "gallery_comments", ["gallery_id"], :name => "index_gallery_comments_on_gallery_id"
 
   create_table "pictures", :force => true do |t|
     t.string   "title"
@@ -31,15 +41,26 @@ ActiveRecord::Schema.define(:version => 20130219005509) do
 
   add_index "pictures", ["gallery_id"], :name => "index_pictures_on_gallery_id"
 
+  create_table "project_comments", :force => true do |t|
+    t.string   "name"
+    t.string   "content"
+    t.integer  "project_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "project_comments", ["project_id"], :name => "index_project_comments_on_project_id"
+
   create_table "projects", :force => true do |t|
     t.string   "title"
     t.text     "content"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
     t.string   "category"
     t.string   "time"
     t.string   "developers"
-    t.string   "images"
+    t.string   "image"
+    t.string   "description"
   end
 
   create_table "rails_admin_histories", :force => true do |t|

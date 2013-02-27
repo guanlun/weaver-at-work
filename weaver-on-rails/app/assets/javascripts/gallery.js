@@ -5,7 +5,12 @@ jQuery.fn.smart_tiles = function() {
 
     var container = $(this);
     container.find("img").each(function() {
-        images.push($(this).attr("src"));
+        var image_data = {
+            src: $(this).attr("src"),
+            title: $(this).attr("data-title"),
+            description: $(this).attr("data-description")
+        };
+        images.push(image_data);
     });
 
     container.find("img").each(function() {
@@ -81,6 +86,7 @@ jQuery.fn.smart_tiles = function() {
     ];
 
     plans[5] = [
+      /*
         [
             { row: 0, col: 0, width: 2, height: 4 },
             { row: 0, col: 2, width: 3, height: 2 },
@@ -88,6 +94,7 @@ jQuery.fn.smart_tiles = function() {
             { row: 4, col: 0, width: 1, height: 1 },
             { row: 4, col: 1, width: 1, height: 1 },
         ],
+        */
         [
             { row: 0, col: 0, width: 4, height: 3 },
             { row: 0, col: 4, width: 1, height: 2 },
@@ -95,6 +102,7 @@ jQuery.fn.smart_tiles = function() {
             { row: 3, col: 0, width: 2, height: 2 },
             { row: 3, col: 2, width: 2, height: 2 },
         ],
+        /*
         [
             { row: 0, col: 0, width: 2, height: 2 },
             { row: 0, col: 2, width: 3, height: 4 },
@@ -109,6 +117,7 @@ jQuery.fn.smart_tiles = function() {
             { row: 1, col: 0, width: 2, height: 4 },
             { row: 3, col: 2, width: 3, height: 2 },
         ],
+        */
     ];
 
 
@@ -149,9 +158,18 @@ jQuery.fn.smart_tiles = function() {
             grid_div.css('height', height);
 
             var img = new Image();
-            img.src = images[grid_id];
+            img.src = images[grid_id].src;
+
+            var image_title = images[grid_id].title;
+            var image_description = images[grid_id].description;
 
             grid_div.html(img);
+            var text_container = $("<div class='image_text_containter'></div>");
+
+            text_container.append("<div class='image_title'>" + image_title + "</div>");
+            text_container.append("<div class='image_description'>" + image_description + "</div>");
+
+            grid_div.append(text_container);
 
             var image_width_by_height = img.width / img.height;
             var container_width_by_height = width / height;

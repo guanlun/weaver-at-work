@@ -10,23 +10,10 @@
                     <div class="list_item_title"><%= link_to p.title, p.id.to_s %></div>
                     <div class="list_item_datetime"><%= p.created_at.strftime("%a, %b %d, %Y") %></div>
                     <div class="list_item_quote">“</div>
+                    <div class="list_item_content"><%= p.description %></div>
                   </div>
                 <% end %>
               </div>
-<!--
-              <div id="wrapper" class="smart_tile_container">
-                <%= image_tag "image1.jpg" %>
-                <%= image_tag "image2.jpg" %>
-                <%= image_tag "image3.jpg" %>
-                <%= image_tag "image4.jpg" %>
-                <%= image_tag "image5.jpg" %>
-                <%= image_tag "image6.jpg" %>
-                <%= image_tag "image7.jpg" %>
-                <%= image_tag "image8.jpg" %>
-                <%= image_tag "image9.jpg" %>
-                <%= image_tag "image10.jpg" %>
-              </div>
--->
         	</div>
         </div>
 <%= render :partial => "elements/footer" %>

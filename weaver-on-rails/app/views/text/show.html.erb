@@ -1,4 +1,5 @@
 <%= stylesheet_link_tag "text_item" %>
+<%= stylesheet_link_tag "comments" %>
 <%= render :partial => "elements/header" %>
         <div id='container'>
 <%= render :partial => "elements/nav_bar" %>
@@ -32,23 +33,23 @@
 
             <%= render :partial => "elements/social_buttons" %>
 
-            <div id="text_comment_container">
-              <div id="text_comment_title">comments</div>
-              <div id="text_comment_list">
+            <div id="comment_container">
+              <div id="comment_title">comments</div>
+              <div id="comment_list">
                 <% comments = @text.text_comments %>
                 <% comments.each do |c| %>
-                  <div class="text_comment_item">
-                    <div class="text_comment_name"><%= c.name %></div>
-                    <div class="text_comment_datetime"><%= c.created_at.strftime("%a, %b %d, %Y") %></div>
+                  <div class="comment_item">
+                    <div class="comment_name"><%= c.name %></div>
+                    <div class="comment_datetime"><%= c.created_at.strftime("%a, %b %d, %Y") %></div>
                     <article>
-                      <div class="text_comment_content"><%= c.content %></div>
+                      <div class="comment_content"><%= c.content %></div>
                     </article>
                   </div>
                 <% end %>
               </div>
 
-              <div id="text_comment_form_container">
-                <div id="text_comment_form_title">write your comment</div>
+              <div id="comment_form_container">
+                <div id="comment_form_title">write your comment</div>
                 <%= form_tag @text.id.to_s + "/add_comment", :method => "post" do %>
                   <%= label_tag :name, "name" %>
                   <%= text_field_tag(:name) %><br />
@@ -59,7 +60,7 @@
               </div>
 
             </div>
-	        </div>
+          </div>
 
         </div>
 <%= render :partial => "elements/footer" %>
