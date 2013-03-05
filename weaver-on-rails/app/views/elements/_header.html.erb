@@ -1,8 +1,14 @@
 <!DOCTYPE html>
 <html xmlns='http://www.w3.org/1999/xhtml'>
     <head>
+        <title>
+            <% begin %>
+                <%= title %> - Weaver at Work
+            <% rescue %>
+                Weaver at Work
+            <% end %>
+        </title>
         <meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
-        <title>Weaver at Work</title>
         <%= stylesheet_link_tag "general" %>
         <%= stylesheet_link_tag "fonts" %>
         <%= stylesheet_link_tag "nav_bar" %>

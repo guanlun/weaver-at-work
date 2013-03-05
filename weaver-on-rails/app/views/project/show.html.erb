@@ -1,12 +1,7 @@
 <%= stylesheet_link_tag "project_item" %>
 <%= stylesheet_link_tag "comments" %>
-<%= render :partial => "elements/header" %>
+<%= render :partial => "elements/header", :locals => { :title => @project.title } %>
         <script type='text/javascript' src='../scripts/scroll.js'></script>
-        <script type='text/javascript'>
-        	$(window).load(function() {
-        		$('#project_item_info_container').scroll();
-        	});
-        </script>
         <div id='container'>
 <%= render :partial => "elements/nav_bar" %>
         	<div id='inner_container'>
@@ -33,13 +28,13 @@
 	        			</div>
 	        		</div>
 	        		
-	        		<div id='project_item_thumbnail_container'>
-                      <%= image_tag @project.image %>
-	        		</div>
+              <div id='project_item_image_container'>
+                <%= image_tag @project.image %>
+              </div>
         		</div>
         		
-        		<div id='project_item_text_container'>
-                  <%= @project.content %>
+        		<div class='text-body' id='project_item_text_container'>
+                  <%= @project.content.html_safe %>
         		</div>
 
                 <%= render :partial => "elements/social_buttons" %>
@@ -63,10 +58,10 @@
                     <div id="comment_form_title">write your comment</div>
                     <%= form_tag @project.id.to_s + "/add_comment", :method => "post" do %>
                       <%= label_tag :name, "name" %>
-                      <%= text_field_tag(:name) %><br />
+                      <%= text_field_tag :name, nil, :class => "field" %><br />
                       <%= label_tag :content, "comment" %><br />
-                      <%= text_area_tag(:content) %><br />
-                      <%= submit_tag("submit") %>
+                      <%= text_area_tag :content, nil, :class => "field" %><br />
+                      <%= submit_tag "submit" %>
                     <% end %>
                   </div>
 

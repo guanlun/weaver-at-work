@@ -12,15 +12,13 @@
 
 #project_item_info_container {
 	float:left;
-	height:140px;
-	margin-top:20px;
+	margin-top:10px;
 	width:250px;
 	text-align:left;
 }
 
 .project_item_info_entry {
-	font-size:12pt;
-    margin-top: 5px;
+	font-size:11pt;
 }
 
 .project_item_info_title {
@@ -32,19 +30,18 @@
     color: #666;
 }
 
-#project_item_thumbnail_container {
+#project_item_image_container {
 	float:right;
 	width:320px;
-	height:inherit;
+  height:180px;
 }
 
-#project_item_thumbnail_container img {
+#project_item_image_container img {
 	width:inherit;
 	height:inherit;
 }
 
 #project_item_text_container {
-	margin-top:30px;
-	font-size:11pt;
-	color:#333;
+  margin-top:30px;
+  color:#333;
 }

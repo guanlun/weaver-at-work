@@ -1,15 +1,15 @@
 <%= stylesheet_link_tag "about" %>
-<%= render :partial => "elements/header" %>
+<%= render :partial => "elements/header", :locals => { :title => 'About' } %>
         <div id='container'>
 <%= render :partial => "elements/nav_bar" %>
         	<div id='about_photo_container'>
             <%= image_tag "profile.png" %>
         	</div>
-            <div id='about_text_container'>
+            <div id='about_text_container' class='text-body'>
                 <p>I am Guanlun, a junior in Computer Science in the Hong Kong University of Science and Techonology.</p>
-                <p>Computer Science is my major and my passion. I spend hours a day learning new stuff and programming various exciting projects. Currently I am interested in computer graphics and web development.</p>
-                <p>I would describe myself as a minimalistic, enthusiasic and responsible person. I like to keep things simple and elegant, basically everthing from my bedroom to my computer desktop. I'm always highly motivated and that's why people usually find me reliable.</p>
-                <p>In my spare time I really love swimming and hiking. Basketball also used to be one of my hobbies, but now I rarely play it :(</p>
+                <p>Computer Science is my major and my passion. I keep learning new stuff and coding exciting stuff. Currently I am most interested in computer graphics and web development.</p>
+                <p>I would describe myself as a minimalistic, enthusiasic and responsible person. I try to keep things simple and elegant, from my bedroom to my computer desktop. I'm always highly motivated and people usually find me reliable.</p>
+                <p>In my spare time I really love swimming and hiking.</p>
             </div>
         </div>
 <%= render :partial => "elements/footer" %>

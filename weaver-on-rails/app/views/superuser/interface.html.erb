@@ -1,7 +1,26 @@
-Upload a picture
-<%= form_tag({:action => :upload_picture}, :multipart => true) do %>
-  file: <%= file_field_tag "image" %><br />
-  title: <%= text_field_tag "title" %><br />
-  description: <%= text_field_tag "description" %><br />
-  <%= submit_tag "upload" %>
-<% end %>
+<!--
+<div id="upload_picture_manager" class="manager">
+  Upload a picture <br />
+  <%= form_tag({:action => :upload_picture}, :multipart => true) do %>
+    File: <%= file_field_tag "image" %><br />
+    Filename: <%= text_field_tag "filename" %><br />
+    Title: <%= text_field_tag "title" %><br />
+    Description: <%= text_field_tag "description" %><br />
+    <%= submit_tag "upload" %>
+  <% end %>
+</div>
+-->
+
+<div id="create_gallery_manager" class="manager">
+  Create Gallery: <br />
+  <%= form_tag({:action => :create_gallery}) do %>
+    Title: <%= text_field_tag "title" %>
+    Description: <%= text_field_tag "description" %>
+    <% unattached_pictures = Picture.where(:gallery_id => nil) %>
+    <% unattached_pictures.each do |p| %>
+      <%= check_box_tag p.id %>
+      <%= p.title %>
+    <% end %>
+    <%= submit_tag "create" %>
+  <% end %>
+</div>

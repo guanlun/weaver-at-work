@@ -18,27 +18,61 @@ class SuperuserController < ApplicationController
       session[:key] = @@session_key
       render :text => "success"
     else
-      render :text => "wrong"
+      render :text => "fail"
     end
   end
 
+=begin
   def upload_picture
-    logger.debug '----------------------------------------'
-    logger.debug params
-    logger.debug '----------------------------------------'
-
     uploaded = params[:image]
-    filename = uploaded.original_filename
+    filename = params[:filename]
+    title = params[:title]
+    description = params[:description]
+
     path = "#{Rails.root}/public/uploads/#{filename}"
 
     begin
-      file = File.open(path, "w")
-      file.write uploaded.read
-      render :text => 'success'
+      File.open(path, "wb") do |f|
+        f.write(uploaded.read)
+        f.close
+      end
     rescue
-      render :text => 'fail'
+      render :text => 'file cannot be uploaded'
     end
+
+    p = Picture.new(:link => path, :title => title, :description => description)
+
+    if p.valid?
+      p.save
+      render :text => 'success'
+    else
+      render :text => 'database erro'
+    end
+  end
+=end
+
+  def create_gallery
+    g = Gallery.new(:title => params[:title], :description => params[:description])
+
+    params.keys.each do |k|
+      if is_int params[k] # images selected
+        g.pictures << Picture.find(k)
+      end
+    end
+
+    if g.valid?
+      g.save
+      render :text => 'success'
+    else
+      render :text => 'invalid gallery'
+    end
+
   end
 
   @@session_key = nil
+
+  private
+    def is_int(str)
+      return !!(str =~ /^[-+]?[0-9]+$/)
+    end
 end

@@ -38,3 +38,17 @@ a:visited {
 	font-size:12pt;
 	text-align:left;
 }
+
+.text-body {
+  font-size: 12pt;
+  line-height: 180%;
+  text-align: justify;
+}
+
+.text-body a, .text-body a:visited {
+  color: #888;
+}
+
+.text-body a:hover, .text-body a:visited:hover {
+  text-decoration: underline;
+}

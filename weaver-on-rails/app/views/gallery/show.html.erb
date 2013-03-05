@@ -1,6 +1,6 @@
 <%= stylesheet_link_tag "gallery" %>
 <%= stylesheet_link_tag "comments" %>
-<%= render :partial => "elements/header" %>
+<%= render :partial => "elements/header", :locals => { :title => @gallery.title } %>
         <div id='container'>
 <%= render :partial => "elements/nav_bar" %>
             <div id='inner_container'>
@@ -44,10 +44,10 @@
                 <div id="comment_form_title">write your comment</div>
                 <%= form_tag @gallery.id.to_s + "/add_comment", :method => "post" do %>
                   <%= label_tag :name, "name" %>
-                  <%= text_field_tag(:name) %><br />
+                  <%= text_field_tag :name, nil, :class => "field" %><br />
                   <%= label_tag :content, "comment" %><br />
-                  <%= text_area_tag(:content) %><br />
-                  <%= submit_tag("submit") %>
+                  <%= text_area_tag :content, nil, :class => "field" %><br />
+                  <%= submit_tag "submit" %>
                 <% end %>
               </div>
             </div>

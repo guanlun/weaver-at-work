@@ -23,4 +23,5 @@ WeaverOnRails::Application.routes.draw do
   post "/superuser/auth", :to => "superuser#auth"
   get "/superuser/interface", :to => "superuser#interface"
   post "/superuser/upload_picture", :to => "superuser#upload_picture"
+  post "/superuser/create_gallery", :to => "superuser#create_gallery"
 end

@@ -7,7 +7,7 @@
       type: "POST",
       data: { login: $("#login").val() }
     }).done(function(data) {
-      if (data == "wrong") {
+      if (data == "fail") {
         alert(data);
       } else if (data == "success") {
         window.location = "/superuser/interface";
