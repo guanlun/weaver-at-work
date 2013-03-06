@@ -4,3 +4,4 @@
 *.gif
 *.png
 weaver-on-rails/public/uploads/*
+.DS_Store
