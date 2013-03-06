@@ -1,13 +1,11 @@
-html {
+html, body {
   margin: 0;
+  font-family: MerriweatherRegular;
+  height: 100%;
 }
 
 body {
-  margin: 0;
-  overflow-x:hidden;
-  /* background: url(<%= asset_path("images/bg_texture.jpg") %>); */
   background: url("/assets/bg_texture.jpg");
-  font-family: MerriweatherRegular;
 }
 
 a:link {

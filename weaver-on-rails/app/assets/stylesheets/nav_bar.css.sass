@@ -1,0 +1,41 @@
+@import common
+
+#nav-bar
+  font-family: PlutoLight
+  overflow: hidden
+  position: relative
+  left: 50%
+  margin-left: -195px
+
+  ul
+    padding-left: 0px
+
+    li
+      float: left
+      display: inline
+      margin-left: 25px
+      margin-right: 25px
+      cursor: pointer
+
+      .underline
+        margin: 0 auto
+        height: 1px
+        width: 0px
+        background: #333
+        @include transition(width, 0.3s)
+
+    #texts:hover
+      .underline
+        width: 36px
+
+    #projects:hover
+      .underline
+        width: 57px
+
+    #gallery:hover
+      .underline
+        width: 48px
+
+    #about:hover
+      .underline
+        width: 41px

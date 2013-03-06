@@ -39,8 +39,10 @@
   background: black;
   width: 100%;
   padding: 5px 12px;
+  text-align: justify;
   opacity: 0;
   -webkit-transition: opacity 0.5s;
+  -webkit-box-sizing: border-box;
 }
 
 .grid:hover .image_text_containter {

@@ -1,0 +1,19 @@
+!!! 5
+%html
+  %head
+    %title
+      - begin
+        = title + ' - Weaver at Work'
+      - rescue
+        = 'Weaver at Work'
+    = stylesheet_link_tag 'general'
+    = stylesheet_link_tag 'fonts'
+    = stylesheet_link_tag 'nav_bar'
+    = stylesheet_link_tag 'corner_banner'
+  %body
+    #banner-container
+      .banner
+        .content
+          %span.weaver weaver
+          %span.contact
+            %a(href='http://github.com/guanlun')my github

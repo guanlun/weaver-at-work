@@ -1,0 +1,36 @@
+@import common
+
+#banner-container
+  position: fixed
+  top: 0px
+  right: 0px
+  height: 120px
+  width: 120px
+  overflow: hidden
+
+  .banner
+    margin-top: 90px
+    height: 20px
+    width: 300px
+    background: #AAA
+    color: #FFF
+    @include rotate(45deg)
+
+    .content
+      padding-left: 30px
+      font-family: PlutoRounded
+      font-size: 16px
+      cursor: pointer
+      @include transition(margin-left, 0.3s)
+
+      &:hover
+        margin-left: -118px
+
+      .weaver
+        color: #fd0
+
+      .contact
+        margin-left: 50px
+
+        a
+          color: #FFF
