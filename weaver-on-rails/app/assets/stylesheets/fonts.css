@@ -42,3 +42,8 @@
   font-family:MerriweatherRegular;
   src:url("Merriweather-Regular.ttf");
 }
+
+@font-face {
+  font-family:HelveticaNeue;
+  src:url("HelveticaNeue.otf");
+}

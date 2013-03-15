@@ -4,11 +4,11 @@ class ProjectController < ApplicationController
   end
 
   def show
-    @project = Project.find params[:id]
+    @project = find_project_by_path(params[:path])[0]
   end
 
   def add_comment
-    @project = Project.find params[:id].to_i
+    @project = find_project_by_path(params[:path])[0]
     comment = @project.project_comments.create
     comment.name = params[:name]
     comment.content = params[:content]
@@ -19,4 +19,12 @@ class ProjectController < ApplicationController
 
     redirect_to :action => "show", :id => params[:id]
   end
+
+  private
+    def find_project_by_path(path)
+      path = path.gsub '_', ' '
+      Project.all do |p|
+        return p if p.title.downcase == path
+      end
+    end
 end

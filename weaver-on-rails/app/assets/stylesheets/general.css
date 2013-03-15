@@ -1,6 +1,7 @@
 html, body {
   margin: 0;
-  font-family: MerriweatherRegular;
+  /* font-family: MerriweatherRegular; */
+  font-family: HelveticaNeue;
   height: 100%;
 }
 
@@ -21,6 +22,7 @@ a:visited {
 #container {
 	margin:0 auto;
 	width:600px;
+    padding-bottom: 20px;
 }
 
 #inner_container {

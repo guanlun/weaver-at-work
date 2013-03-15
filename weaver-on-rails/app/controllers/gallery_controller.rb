@@ -4,11 +4,11 @@ class GalleryController < ApplicationController
   end
 
   def show
-    @gallery = Gallery.find params[:id]
+    @gallery = find_gallery_by_path(params[:path])[0]
   end
 
   def add_comment
-    @gallery = Gallery.find params[:id].to_i
+    @gallery = find_gallery_by_path(params[:path])[0]
     comment = @gallery.gallery_comments.create
     comment.name = params[:name]
     comment.content = params[:content]
@@ -19,4 +19,12 @@ class GalleryController < ApplicationController
 
     redirect_to :action => "show", :id => params[:id]
   end
+
+  private
+    def find_gallery_by_path(path)
+      path = path.gsub '_', ' '
+      Gallery.all do |g|
+        return g if g.title.downcase == path
+      end
+    end
 end

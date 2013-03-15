@@ -8,7 +8,7 @@
 
                 <% @texts.each do |t| %>
                   <div class="list_item">
-                    <div class="list_item_title"><%= link_to t.title, t.id.to_s %></div>
+                    <div class="list_item_title"><%= link_to t.title, 'texts/' + t.title.downcase.gsub(' ', '_') %></div>
                     <div class="list_item_datetime"><%= t.created_at.strftime("%a, %b %d, %Y") %></div>
                     <div class="list_item_quote">“</div>
                     <div class="list_item_content">
@@ -34,4 +34,3 @@
 	        </div>
 
         </div>
-<%= render :partial => "elements/footer" %>
