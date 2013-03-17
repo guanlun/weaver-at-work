@@ -23,7 +23,11 @@
 
 .list_item_title a {
   color: #a03 !important;
+  transition: color 0.4s;
   -webkit-transition: color 0.4s;
+  -moz-transition: color 0.4s;
+  -o-transition: color 0.4s;
+  -ms-transition: color 0.4s;
 }
 
 .list_item_title:hover a {
@@ -71,9 +75,14 @@
   height: 80px;
   margin-left: 10px;
   opacity: 0.6;
-  -webkit-transition: opacity 0.5s;
   box-shadow: 0px 0px 3px #000;
   cursor: pointer;
+
+  transition: opacity 0.5s;
+  -webkit-transition: opacity 0.5s;
+  -moz-transition: opacity 0.5s;
+  -o-transition: opacity 0.5s;
+  -ms-transition: opacity 0.5s;
 }
 
 .list_item_gallery_item:first-child {

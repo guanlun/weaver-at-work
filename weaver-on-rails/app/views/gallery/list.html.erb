@@ -10,7 +10,7 @@
                 <% else %>
                   <% @galleries.each do |g| %>
                     <div class="list_item">
-                      <div class="list_item_title"><%= link_to g.title, 'gallery/' + g.title.downcase.gsub(' ', '_') %></div>
+                      <div class="list_item_title"><%= link_to g.title, '/gallery/' + g.title.downcase.gsub(' ', '_') %></div>
                       <div class="list_item_datetime"><%= g.created_at.strftime("%a, %b %d, %Y") %></div>
                       <div class="list_item_quote">“</div>
                       <div class="list_item_content"><%= g.description %></div>

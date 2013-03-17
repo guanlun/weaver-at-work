@@ -42,21 +42,25 @@
                 <div id="comment_container">
                   <div id="comment_title">comments</div>
                   <div id="comment_list">
-                    <% comments = @project.project_comments %>
-                    <% comments.each do |c| %>
-                      <div class="comment_item">
-                        <div class="comment_name"><%= c.name %></div>
-                        <div class="comment_datetime"><%= c.created_at.strftime("%a, %b %d, %Y") %></div>
-                        <article>
-                          <div class="comment_content"><%= c.content %></div>
-                        </article>
-                      </div>
+                    <% comments = @project.project_comments.sort_by do |t| t.created_at end %>
+                    <% if comments.empty? %>
+                      No comment now. Be the first one to comment!
+                    <% else %>
+                      <% comments.each do |c| %>
+                        <div class="comment_item">
+                          <div class="comment_name"><%= c.name %></div>
+                          <div class="comment_datetime"><%= c.created_at.strftime("%a, %b %d, %Y") %></div>
+                          <article>
+                            <div class="comment_content"><%= c.content %></div>
+                          </article>
+                        </div>
+                      <% end %>
                     <% end %>
                   </div>
 
                   <div id="comment_form_container">
                     <div id="comment_form_title">write your comment</div>
-                    <%= form_tag @project.id.to_s + "/add_comment", :method => "post" do %>
+                    <%= form_tag @project.title.downcase.gsub(' ', '_') + "/add_comment", :method => "post" do %>
                       <%= label_tag :name, "name" %>
                       <%= text_field_tag :name, nil, :class => "field" %><br />
                       <%= label_tag :content, "comment" %><br />

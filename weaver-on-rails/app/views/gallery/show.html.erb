@@ -16,7 +16,7 @@
 
             <div id="gallery_wrapper" class="smart_tile_container">
               <% @gallery.pictures.each do |p| %>
-                <%= image_tag p.link, :data => { :title => p.title, :description => p.description } %>
+                <%= image_tag p.link, :data => { :title => p.title, :description => p.created_at.strftime('%a, %b %d, %Y') } %>
               <% end %>
             </div>
             <%= render :partial => "elements/social_buttons" %>
@@ -24,7 +24,7 @@
             <div id="comment_container">
               <div id="comment_title">comments</div>
               <div id="comment_list">
-                <% comments = @gallery.gallery_comments %>
+                <% comments = @gallery.gallery_comments.sort_by do |t| t.created_at end %>
                 <% if comments.empty? %>
                   No comment now. Be the first one to comment!
                 <% else %>
@@ -42,7 +42,7 @@
 
               <div id="comment_form_container">
                 <div id="comment_form_title">write your comment</div>
-                <%= form_tag @gallery.id.to_s + "/add_comment", :method => "post" do %>
+                <%= form_tag @gallery.title.downcase.gsub(' ', '_') + "/add_comment", :method => "post" do %>
                   <%= label_tag :name, "name" %>
                   <%= text_field_tag :name, nil, :class => "field" %><br />
                   <%= label_tag :content, "comment" %><br />

@@ -41,20 +41,32 @@
   padding: 5px 12px;
   text-align: justify;
   opacity: 0;
+
+  transition: opacity 0.5s;
   -webkit-transition: opacity 0.5s;
+  -moz-transition: opacity 0.5s;
+  -o-transition: opacity 0.5s;
+  -ms-transition: opacity 0.5s;
+
+  box-sizing: border-box;
   -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  -ms-box-sizing: border-box;
 }
 
 .grid:hover .image_text_containter {
-  opacity: 0.6;
+  opacity: 0.8;
 }
 
 .image_title {
+  margin-top: 3px;
   color: #fff;
-  font-size: 14pt;
+  font-size: 11pt;
 }
 
 .image_description {
+  margin-top: 3px;
   color: #999;
   font-size: 10pt;
 }

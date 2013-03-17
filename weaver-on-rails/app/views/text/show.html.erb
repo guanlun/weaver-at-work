@@ -36,7 +36,7 @@
             <div id="comment_container">
               <div id="comment_title">comments</div>
               <div id="comment_list">
-                <% comments = @text.text_comments %>
+                <% comments = @text.text_comments.sort_by do |t| t.created_at end %>
                 <% if comments.empty? %>
                   No comment now. Be the first one to comment!
                 <% else %>
@@ -54,7 +54,7 @@
 
               <div id="comment_form_container">
                 <div id="comment_form_title">write your comment</div>
-                <%= form_tag @text.id.to_s + "/add_comment", :method => "post" do %>
+                <%= form_tag @text.title.downcase.gsub(' ', '_') + "/add_comment", :method => "post" do %>
                   <%= label_tag :name, "name" %>
                   <%= text_field_tag :name, nil, :class => "field" %><br />
                   <%= label_tag :content, "comment" %><br />
